@@ -1,6 +1,8 @@
 package ru.strebkov.t1_SpringAopExample.exception;
 
-public class PlantException extends RuntimeException{
+import ru.strebkov.t1_SpringAopExample.annotation.Throw;
+@Throw // ver 4
+public class PlantException extends RuntimeException {
 
     public PlantException() {
     }

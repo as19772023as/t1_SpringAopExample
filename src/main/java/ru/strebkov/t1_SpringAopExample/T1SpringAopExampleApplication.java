@@ -9,6 +9,7 @@ import org.springframework.context.event.EventListener;
 import ru.strebkov.t1_SpringAopExample.model.Info;
 import ru.strebkov.t1_SpringAopExample.model.Plant;
 import ru.strebkov.t1_SpringAopExample.service.PlantService;
+import ru.strebkov.t1_SpringAopExample.utils.ThreadUtils;
 import ru.strebkov.t1_SpringAopExample.utils.UserContext;
 
 import java.util.List;
@@ -31,13 +32,21 @@ public class T1SpringAopExampleApplication {
      //   info.info();
 
         // UserContext.setUsername("admin");
-        UserContext.setUsername("user");
-        plantService.addPlant(new Plant("Роза", "Цветок"));
+        UserContext.setUsername("admin");
+      //  plantService.addPlant(new Plant("Роза", "Цветок"));
+        plantService.addPlant(new Plant("Роза1", "Цветок")); // ver 6 ValidateAspect
+
+        ThreadUtils.waitTime(2000);
+
         System.out.println(plantService.getPlantByType("Цветок"));
        System.out.println(plantService.getPlantByName("Роза"));
 //        // plantService.addPlants(List.of(new Plant("Плод", "Яблоко")));
 //        // plantService.addPlant(new Plant("Плод", "Яблоко"));
 //        System.out.println(plantService.getPlantByType("Яблоко"));
 
+       plantService.addPlants(List.of(new Plant("Кукуруза", "Трава"), new Plant("Дуб", "Дерево")));
+     //   plantService.addPlants(List.of(new Plant("Кукуруза", "Трава"))); // для ver 4 ExceptionHandlerAspect
+
+        ThreadUtils.waitTime(2000);
     }
 }

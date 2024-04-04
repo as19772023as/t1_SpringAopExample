@@ -18,7 +18,10 @@ import java.util.Map;
 
 @Component
 @Aspect
-//@Order(1) // для установления приоритета 1 выше чем 2,3 ...явно контрол. поряд. выполнения аспектов
+@Order(2) // ver 3
+//@Order(1) // для ver2 установления приоритета 1 выше чем 2,3 ...явно контрол. поряд. выполнения аспектов
+// ver 2 - без приоритета ----@Order(1)--- иожет ошибки --- No MethodInvocation found: ----
+// так как над методом 2е аннотации Аспекты разные
 public class PreInvokeCheckerAspect { // PlantService
     private static final Map<String, List<RoleType>> USERS = new HashMap<>();
 
